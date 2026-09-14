@@ -16,6 +16,7 @@ todoForm.addEventListener('submit', (e) => {
 
     const todoValue = todoInput.value.trim()
 
+
     if (!todoValue) {
         return
     }
@@ -39,14 +40,15 @@ todoForm.addEventListener('submit', (e) => {
             text: todoValue,
             isCompleted: false
         }
-        emptytag.textContent = ""
+
         todos.push(newTodo)
+
 
     }
 
-    todoInput.value = ""
     cancelButton()
     renderTodo() // jab koi naya todo add hoga first update todos render ho jaega
+
 })
 
 
@@ -68,10 +70,20 @@ function renderTodo() {
 
 
         todoList.append(li)
+
     })
 
+    
     taskCount.textContent = `TASKS (${todos.length})`
     completeCount.textContent = `COMPLETED: ${todos.filter((todo) => todo.isCompleted).length}`
+    if (todos.length === 0) {
+
+            emptytag.classList.remove("hidden");
+
+            return;
+        }else{
+            emptytag.classList.add("hidden");
+        }
 }
 
 renderTodo()// jab first time file execute hoga tab exixting todo render ho jaega   
@@ -127,9 +139,8 @@ function todoDelete(e, id) {
             return todo
         }
     })
-    formBtn.classList.add("bg-yellow-600")
-    formBtn.classList.remove("bg-violet-700")
-
+    formBtn.classList.remove("bg-yellow-600")
+    formBtn.classList.add("bg-violet-700")
 }
 
 function editTodo(id) {

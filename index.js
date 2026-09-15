@@ -22,7 +22,7 @@ todoForm.addEventListener('submit', (e) => {
     }
 
     console.log({ editTodoId, todoValue });
-
+           
     if (editTodoId) {
         todos = todos.map((todo) => {
             if (todo.id === Number(editTodoId)) {
@@ -68,22 +68,23 @@ function renderTodo() {
                         <button class="text-pink-500 font-bold text-sm hover:underline cursor-pointer" data-action="delete" data-id=${todo.id}>Delete</button>
                     </div>`
 
-
+            
         todoList.append(li)
 
     })
 
-    
+
     taskCount.textContent = `TASKS (${todos.length})`
     completeCount.textContent = `COMPLETED: ${todos.filter((todo) => todo.isCompleted).length}`
+    
     if (todos.length === 0) {
 
-            emptytag.classList.remove("hidden");
+        emptytag.classList.remove("hidden");
 
-            return;
-        }else{
-            emptytag.classList.add("hidden");
-        }
+        return;
+    } else {
+        emptytag.classList.add("hidden");
+    }
 }
 
 renderTodo()// jab first time file execute hoga tab exixting todo render ho jaega   
